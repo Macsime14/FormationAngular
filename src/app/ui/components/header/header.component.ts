@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public title = 'Chloe\'s app';
+  //public title2: string;
+  constructor() {
+    //this.title2 = 'title2';
+  }
 
   ngOnInit() {
+    //this.title2 = 'titre3';
   }
 
 }
