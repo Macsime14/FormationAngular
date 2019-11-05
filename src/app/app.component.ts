@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
+
 
 // Déclaration en tant que WebComponent
 @Component({
@@ -9,4 +11,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public title = 'formation-angular';
+  public faCoffee = faDollarSign;
 }
