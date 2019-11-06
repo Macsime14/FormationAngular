@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PagePrestationsComponent } from './pages/page-prestations/page-prestations.component';
 import { PrestationsRoutingModule } from './prestations-routing.module';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 
 // Ajout d'une route
 
@@ -9,7 +10,8 @@ import { CommonModule } from '@angular/common';
   declarations: [PagePrestationsComponent],
   imports: [
     CommonModule,
-    PrestationsRoutingModule
+    PrestationsRoutingModule,
+    SharedModule
   ]
 })
 export class PrestationsModule { }
