@@ -17,7 +17,8 @@ const appRoutes: Routes = [
   {
     path: '**',
     loadChildren: () => import('./page-not-found/page-not-found.module').then(mod => mod.PageNotFoundModule),
-  }
+  },
+
 ];
 
 // Uniquement des routes.
