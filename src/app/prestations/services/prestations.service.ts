@@ -2,36 +2,49 @@ import { Injectable } from '@angular/core';
 import { Prestation } from 'src/app/shared/models/prestation';
 import { fakePrestations } from './fake-prestations';
 import { State } from 'src/app/shared/enums/state.enum';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection
+} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrestationsService {
-  private pCollection: Prestation[];
-  constructor() {
-    this.collection =  fakePrestations;
+  private pCollection: Observable<Prestation[]>;
+  private itemsCollection: AngularFirestoreCollection<Prestation>;
+  constructor(private afs: AngularFirestore) {
+    this.itemsCollection = afs.collection<Prestation>('prestations');
+    // tab => tableau JSON
+    this.collection = this.itemsCollection.valueChanges().pipe(
+      // map(tab => tab.map(obj => new Prestation(obj)))
+      map(tab => {
+        // Retourne un tableau de type Prestation.
+        return tab.map(obj => {
+          // Création d'un objet de type Prestation
+          return new Prestation(obj);
+        });
+      })
+    );
   }
-  /* Pas besoin d'utiliser get ou set car Angular appel le get ou le set en fonction du type d'appel.
-  */
-  // Get Collection
-  public get collection() {
+  // get collection
+  public get collection(): Observable<Prestation[]> {
     return this.pCollection;
   }
-  // Set Collectiion
-  public set collection(col: Prestation[]) {
+  // set collection
+  public set collection(col: Observable<Prestation[]>) {
     this.pCollection = col;
   }
-  // Update Item in collection
+  // update item in collection
   public update(item: Prestation, state: State) {
     console.log(item);
     item.state = state;
     console.log(item);
   }
-  // Add Item in Collection
-  public add(item: Prestation) {
-    this.collection.push(new Prestation(item));
-  }
-  // Delete Item in Collection
-
-  // Get Item By Id
+  // add item in collection
+  public add(item: Prestation) {}
+  // delete item in collection
+  // get item by id
 }

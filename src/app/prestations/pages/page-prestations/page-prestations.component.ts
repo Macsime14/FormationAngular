@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { PrestationsService } from '../../services/prestations.service';
-import { Prestation } from 'src/app/shared/models/prestation';
-import { State } from 'src/app/shared/enums/state.enum';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription, Observable } from 'rxjs';
+import { State } from 'src/app/shared/enums/state.enum';
+import { Prestation } from 'src/app/shared/models/prestation';
+import { PrestationsService } from '../../services/prestations.service';
 
 @Component({
   selector: 'app-page-prestations',
@@ -10,7 +11,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./page-prestations.component.scss']
 })
 export class PagePrestationsComponent implements OnInit {
-  public collectiona: Prestation[];
+
+  // public collectiona: Prestation[];
+  public collection$: Observable<Prestation[]>;
   public headers: string[];
   public states = State;
   // public states = Object.values(State);
@@ -18,6 +21,7 @@ export class PagePrestationsComponent implements OnInit {
   public label: string;
   public labelBtn: string;
   public routeBtn: string;
+  sub: Subscription;
 
 
   constructor(
@@ -26,7 +30,10 @@ export class PagePrestationsComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    this.collectiona = this.prestationService.collection;
+    this.collection$ = this.prestationService.collection;
+    /* this.sub = this.prestationService.collection.subscribe((data) => {
+      this.collectiona = data;
+    });*/
     this.headers = [
       'Type',
       'Client',
@@ -53,4 +60,8 @@ export class PagePrestationsComponent implements OnInit {
     // console.log(item, event.target.value);
     this.prestationService.update(item, event.target.value);
   }
+
+  /*ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }*/
 }
