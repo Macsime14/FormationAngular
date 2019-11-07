@@ -16,6 +16,8 @@ export class PagePrestationsComponent implements OnInit {
   // public states = Object.values(State);
   public title: string;
   public label: string;
+  public labelBtn: string;
+  public routeBtn: string;
 
 
   constructor(
@@ -41,6 +43,8 @@ export class PagePrestationsComponent implements OnInit {
       console.log(donnees);
       this.title = donnees.title;
       this.label = donnees.label;
+      this.labelBtn = 'Ajouter Prestation';
+      this.routeBtn = 'add';
     });
 
   }

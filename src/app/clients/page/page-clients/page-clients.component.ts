@@ -14,6 +14,9 @@ export class PageClientsComponent implements OnInit {
   public states = StateClient;
   public title: string;
   public label: string;
+  public labelBtn: string;
+  public routeBtn: string;
+
   constructor(private clientService: ClientService) { }
 
   ngOnInit() {
@@ -26,6 +29,8 @@ export class PageClientsComponent implements OnInit {
     ];
     this.title = 'Clients';
     this.label = 'Tous les Fucking Clients';
+    this.labelBtn = 'Ajouter un Client';
+    this.routeBtn = 'add';
   }
   public update(item: any, event: any) {
     // console.log(item, event.target.value);
