@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PrestationsService } from 'src/app/prestations/services/prestations.service';
-import { ActivatedRoute } from '@angular/router';
+import { Prestation } from 'src/app/shared/models/prestation';
 
 @Component({
   selector: 'app-page-add-prestation',
@@ -12,8 +13,7 @@ export class PageAddPrestationComponent implements OnInit {
   public title: string;
   public label: string;
 
-
-  constructor(  private prestationService: PrestationsService, private route: ActivatedRoute) {
+  constructor(  private prestationService: PrestationsService, private route: ActivatedRoute, private router: Router) {
 
   }
 
@@ -25,4 +25,11 @@ export class PageAddPrestationComponent implements OnInit {
         });
   }
 
+  public add(item: Prestation) {
+    console.log(item);
+    this.prestationService.add(item);
+    // this.router.navigate(['prestations']);
+    // redirection relative par rapport à la route sur laquelle vous êtes.
+    this.router.navigate(['../'], {relativeTo: this.route});
+  }
 }

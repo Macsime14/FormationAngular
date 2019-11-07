@@ -28,7 +28,9 @@ export class PrestationsService {
     console.log(item);
   }
   // Add Item in Collection
-
+  public add(item: Prestation) {
+    this.collection.push(new Prestation(item));
+  }
   // Delete Item in Collection
 
   // Get Item By Id
