@@ -1,0 +1,6 @@
+<p>page-edit works!</p>
+<app-template-a>
+  <app-form-prestation *ngIf="items$ | async as item" [init]=item (nItem)="edit($event)">
+
+  </app-form-prestation>
+</app-template-a>

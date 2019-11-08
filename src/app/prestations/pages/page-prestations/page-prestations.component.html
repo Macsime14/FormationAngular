@@ -13,7 +13,8 @@
             {{ state.value }}</option>
         </select>
       </td>
-      <td>{{ item.comment }}</td>
+      <td><app-action (action)="doAction($event, item)"></app-action></td>
+      <!-- <td>{{ item.comment }}</td> -->
     </tr>
   </app-tableau-light>
   <app-button [label]="labelBtn" [route]="routeBtn"></app-button>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrestationsService } from 'src/app/prestations/services/prestations.service';
 import { Prestation } from 'src/app/shared/models/prestation';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-add-prestation',
@@ -13,6 +14,7 @@ export class PageAddPrestationComponent implements OnInit {
   public title: string;
   public label: string;
 
+  public items$: Observable<Prestation>;
   constructor(  private prestationService: PrestationsService, private route: ActivatedRoute, private router: Router) {
 
   }

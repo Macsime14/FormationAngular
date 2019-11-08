@@ -6,7 +6,6 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +24,6 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     BrowserModule,
     UiModule,
     LoginModule,
-    FontAwesomeModule,
     NgbModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
