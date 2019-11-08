@@ -1,4 +1,5 @@
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import localeFrExtra from '@angular/common/locales/extra/fr';
 import localeFr from '@angular/common/locales/fr';
 import { LOCALE_ID, NgModule } from '@angular/core';
@@ -28,7 +29,8 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     NgbModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HttpClientModule
   ],
   // Déclaration des services.
   providers: [{provide: LOCALE_ID, useValue: 'fr-FR' }],

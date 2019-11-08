@@ -58,10 +58,18 @@ export class PagePrestationsComponent implements OnInit {
 
   public update(item: any, event: any) {
     // console.log(item, event.target.value);
-    this.prestationService.update(item, event.target.value);
+    this.prestationService.update(item, event.target.value).then((res) => {
+      // traiter le retour de res api
+      item.state = event.target.value;
+    });
+    // this.prestationService.update(item, event.target.value).subscribe((res) => {
+    //   // traiter le retour de res api
+    //   item.state = event.target.value;
+    // });
   }
 
-  /*ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }*/
+  // ngOnDestroy(): void {
+  //   // this.sub.unsubscribe();
+
+  // }
 }
